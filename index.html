@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resistance Drift Analysis Dashboard</title>
+  <style>
+    :root {
+      --navy-dark: #001b33;
+      --navy: #002b5e;
+      --blue: #00509e;
+      --white: #ffffff;
+      --light: #f4f7fa;
+      --muted: #cccccc;
+      --text: #1a1a1a;
+    }
+
+    /* Smooth fade-in on load */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+      background-size: 400% 400%;
+      animation: gradientShift 20s ease infinite;
+      color: var(--text);
+      padding: 30px 20px;
+      max-width: 1100px;
+      margin: auto;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--white);
+      border-bottom: 2px solid var(--blue);
+      padding-bottom: 10px;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px auto;
+      color: var(--muted);
+    }
+
+    .plot-section {
+      background-color: var(--white);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 50px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 1s ease;
+    }
+
+    .plot-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .plot-section h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      color: var(--navy);
+      text-align: center;
+    }
+
+    .plot-section p {
+      text-align: center;
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .plot-section img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto 15px auto;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      transition: transform 0.3s ease;
+    }
+
+    .plot-section img:hover {
+      transform: scale(1.03);
+    }
+
+    footer {
+      text-align: center;
+      color: #bbb;
+      font-size: 0.9rem;
+      margin-top: 80px;
+      border-top: 1px solid #444;
+      padding-top: 15px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .plot-section h3 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Resistance Drift Analysis Dashboard</h1>
+  <p class="description">
+    This dashboard presents resistance measurement trends over time (1 kHz), including environmental factors like temperature and humidity. It uses advanced statistical analysis including Allan deviation, allowing for deep insights into system behavior and drift.
+  </p>
+
+  <div class="plot-section">
+    <h3>1. Mean Resistance Over Time</h3>
+    <p>Mean resistance on each date with standard deviation bars.</p>
+    <img src="plots/Summary_Mean_Resistance.png" alt="Mean Resistance Over Time">
+  </div>
+
+  <div class="plot-section">
+    <h3>2. Mean Temperature Over Time</h3>
+    <p>Average temperature per measurement date.</p>
+    <img src="plots/Summary_Mean_Temperature.png" alt="Mean Temperature Over Time">
+  </div>
+
+  <div class="plot-section">
+    <h3>3. Mean Humidity Over Time</h3>
+    <p>Humidity levels per date to study environmental impact.</p>
+    <img src="plots/Summary_Mean_Humidity.png" alt="Mean Humidity Over Time">
+  </div>
+
+  <div class="plot-section">
+    <h3>4. Allan Deviation of Resistance Measurements</h3>
+    <p>Noise characterization over different averaging times.</p>
+    <img src="plots/Allan_Deviation_Comparison.png" alt="Allan Deviation">
+  </div>
+
+  <div class="plot-section">
+    <h3>5. Resistance Drift Over Time</h3>
+    <p>Longitudinal drift at 1 kHz across test dates.</p>
+    <img src="plots/Resistance_Drift_Over_Time.png" alt="Drift Over Time">
+  </div>
+
+  <div class="plot-section">
+    <h3>6. Resistance Drift vs Temperature</h3>
+    <p>Drift trend against mean temperature.</p>
+    <img src="plots/Drift_vs_Temperature.png" alt="Drift vs Temperature">
+  </div>
+
+  <div class="plot-section">
+    <h3>7. Resistance Drift vs Humidity</h3>
+    <p>Drift plotted against humidity during tests.</p>
+    <img src="plots/Drift_vs_Humidity.png" alt="Drift vs Humidity">
+  </div>
+
+  <div class="plot-section">
+    <h3>8. Resistance Comparison at Similar Conditions</h3>
+    <p>Boxplots comparing resistance under near-identical temp & humidity conditions.</p>
+    <img src="plots/Resistance_Comparison_1_Temp24_5_Hum56_0.png" alt="Condition 1" />
+    <img src="plots/Resistance_Comparison_2_Temp24_5_Hum56_1.png" alt="Condition 2" />
+    <img src="plots/Resistance_Comparison_3_Temp24_5_Hum56_2.png" alt="Condition 3" />
+    <img src="plots/Resistance_Comparison_4_Temp24_6_Hum55_3.png" alt="Condition 4" />
+    <img src="plots/Resistance_Comparison_5_Temp24_6_Hum56_4.png" alt="Condition 5" />
+  </div>
+
+  <footer>
+    &copy; 2025 | Aman Malhotra — Resistance Drift Analysis Project
+  </footer>
+
+</body>
+</html>
+
