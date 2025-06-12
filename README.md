@@ -2,13 +2,13 @@
 
 This repository contains Python scripts and visualizations used for the statistical analysis of resistance drift under varying environmental conditions such as temperature and humidity.
 
-📊 Project Highlights:
+Project Highlights:
 - Allan Deviation Analysis
 - Resistance Drift Visualization
 - Correlation with Temperature & Humidity
 - Clean and Professional HTML Dashboard
 
-## 📁 Project Structure
+Project Structure
 Drift_Analysis/
 ├── data/ # Raw CSV measurement files
 ├── plots/ # Saved output plots
@@ -17,17 +17,17 @@ Drift_Analysis/
 ├── README.md # You're here!
 └── LICENSE # Project license
 
-## 📌 Developed for:
+Developed for:
 **CSIR-National Physical Laboratory**  
 Internship Project – Apex Metrology (2025)  
 By Aman Malhotra
 
-## 🛠️ Tools & Libraries
+Tools & Libraries
 - Python
 - Matplotlib, Seaborn, Pandas, NumPy
 - Allan deviation, regression, drift estimation
 
-## 📬 Contact
+Contact
 For questions or collaboration:
 [LinkedIn](https://www.linkedin.com/in/amanmalhotrainit) 
 [GitHub](https://github.com/amanmalhotrainit)
